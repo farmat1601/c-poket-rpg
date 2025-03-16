@@ -1,0 +1,4 @@
+﻿  my_game.c
+C:\Users\USER\source\repos\my_game\my_game.c(30,6): warning C4013: 'ynSelect'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\USER\source\repos\my_game\my_game.c(41): warning C4716: 'startingSeen': 값을 반환해야 합니다.
+  my_game.vcxproj -> C:\Users\USER\source\repos\my_game\x64\Debug\my_game.exe
