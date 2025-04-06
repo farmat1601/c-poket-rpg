@@ -4,7 +4,7 @@
 /*
 포켓몬 rpg
 데미지: (3*공격 종족값 + 기술의 위력)/50 * 상성값
-lv 1업마다 공격력 5% 체력 6%
+lv 1업마다 공격력 1.7% 체력 2%
 n레벨에서n+1레벨로 오를 때 필요하 exp의 양은 200*(1+ (체력 + 공격력)*0.0003)^n이다.
 
 */
@@ -14,13 +14,21 @@ typedef struct Poketmon {
 	int hp;
 	int lv;
 	int exp;
-}pkm;
+}Pkm;
+
 typedef struct _origin {
 	char name[20];
 	int atk;
 	int hp;
 	int exp;
-} origin;
+} Origin;
+Pkm newPoketmon(int a, Origin O) {
+	Pkm empty;
+	empty.lv = a;
+	empty.atk = O.atk * (1.017) ^ (a - 1);//제곱함수 만들기
+	empty.hp = O.hp * (1.02) ^ (a - 1);
+	empty.exp = O.exp
+}
 void scan(const char* s, char* to) {
 	rewind(stdin);
 	scanf(s, to);
@@ -76,47 +84,47 @@ int goArea() {
 	printf("'''''''''''' %s으로 가는 중'''''''''''''", citys[answer - 1]);
 	return answer;
 }
-void poketsave() {
-	struct Poketmon eve;
+void defineOrigin() {
+	Origin eve;
 	eve.atk = 26;
 	eve.hp = 105;
-	eve.lv = 1;
+	eve.exp = 1;
 	strcpy(eve.name, "");
 
-	struct Poketmon Arceus;
+	Origin Arceus;
 	Arceus.atk = 108;
 	Arceus.hp = 318;
-	Arceus.lv = 1;
+	Arceus.exp = 1;
 
-	struct Poketmon Charmander;
+	Origin Charmander;
 	Charmander.atk = 38;
 	Charmander.hp = 122;
-	Charmander.lv = 1;
+	Charmander.exp = 1;
 
-	struct Poketmon Bulbasaur;
+	Origin Bulbasaur;
 	Bulbasaur.atk = 26;
 	Bulbasaur.hp = 134;
-	Bulbasaur.lv = 1;
+	Bulbasaur.exp = 1;
 
-	struct Poketmon Blastoise;
+	Origin Blastoise;
 	Blastoise.atk = 36;
 	Blastoise.hp = 118;
-	Blastoise.lv = 1;
+	Blastoise.exp = 1;
 
-	struct Poketmon Nidoran;
+	Origin Nidoran;
 	Nidoran.atk = 30;
 	Nidoran.hp = 130;
-	Nidoran.lv = 1;
+	Nidoran.exp = 1;
 
-	struct Poketmon Poliwag;
+	Origin Poliwag;
 	Poliwag.atk = 10;
 	Poliwag.hp = 50;
-	Poliwag.lv = 1;
+	Poliwag.exp = 1;
 
-	struct Poketmon Bellsprout;
+	Origin Bellsprout;
 	Bellsprout.atk = 50;
 	Bellsprout.hp = 65;
-	Bellsprout.lv = 1;
+	Bellsprout.exp = 1;
 
  }
 int main() {
@@ -134,8 +142,8 @@ int main() {
 
 	startingSeen(id);//아이디를 저장한다.
 	int loc;
-	loc = goArea;
-
+	loc = goArea();
+	
 	struct Poketmon eve;
 	eve.atk = 26;
 	eve.hp = 105;
