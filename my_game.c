@@ -8,12 +8,22 @@ lv 1업마다 공격력 1.7% 체력 2%
 n레벨에서n+1레벨로 오를 때 필요하 exp의 양은 200*(1+ (체력 + 공격력)*0.0003)^n이다.
 
 */
+int square(double a, int b) {
+	double c = 1;
+	for (int i = 0; b > i; i++) {
+		c = c * a;
+	}
+	return c;
+}
+
 typedef struct Poketmon {
 	char name[20];
 	int atk;
 	int hp;
+	int nhp;
 	int lv;
 	int exp;
+	int nexp;
 }Pkm;
 
 typedef struct _origin {
@@ -25,9 +35,9 @@ typedef struct _origin {
 Pkm newPoketmon(int a, Origin O) {
 	Pkm empty;
 	empty.lv = a;
-	empty.atk = O.atk * (1.017) ^ (a - 1);//제곱함수 만들기
-	empty.hp = O.hp * (1.02) ^ (a - 1);
-	empty.exp = O.exp
+	empty.atk = O.atk * square(1.017, a);
+	empty.hp = O.hp * square(1.02, a);
+	empty.exp = O.exp * square(1.023, a);
 }
 void scan(const char* s, char* to) {
 	rewind(stdin);
@@ -56,6 +66,7 @@ void startingSeen(char* _id) {
 	printf("눈을 떠보니 침대였다. 역시 박사님의 마취총은 굉장해!\n 자, 그럼 여행을 시작해볼까?\n");
 }
 int select(const char* options[], int n) {
+	//첫번째 경우  = 1;
 	for (int i = 1; i < n + 1; i++) {
 		printf("%d. %s\n", i, options[i-1]);
 	}
@@ -74,17 +85,30 @@ int ynSelect() {
 	return select(option, 2);
 }
 int goArea() {
-	const char* citys[4];
+	const char* citys[2];
 	citys[0] = "태초마을";
-	citys[1] = "하나지방";
-	citys[2] = "관동지방";
-	citys[3] = "신오지방";
+	citys[1] = "신오지방";
 	int answer;
-	answer = select(citys, 4);
+	answer = select(citys, 2);
 	printf("'''''''''''' %s으로 가는 중'''''''''''''", citys[answer - 1]);
 	return answer;
 }
+int menu() {
+	const char* act[4];
+	act[0] = "포켓몬";
+	act[1] = "가방";
+	act[2] = "이동";
+	act[3] = "종료";
+	int answer;
+	answer = select(act, 4);
+	return answer;
+}
 void defineOrigin() {
+	Origin pikachu;
+	pikachu.atk = 28;
+	pikachu.hp = 120;
+	pikachu.exp = 4;
+
 	Origin eve;
 	eve.atk = 26;
 	eve.hp = 105;
@@ -131,7 +155,7 @@ int main() {
 	char id[15];
 
 	printf("모든 답변은 1(yes)혹은 2(no)로만 할 수 있으며 다음전개로 갈때에는 엔터키를 누르셔야합니다.\n");
-	pkm pikachu;
+	Pkm pikachu;
 	pikachu.atk = 28;
 	pikachu.hp = 120;
 	pikachu.lv = 1;
@@ -143,6 +167,11 @@ int main() {
 	startingSeen(id);//아이디를 저장한다.
 	int loc;
 	loc = goArea();
+
+	int pick = menu();
+	if (pick == 1) {
+		rvis
+	};
 	
 	struct Poketmon eve;
 	eve.atk = 26;

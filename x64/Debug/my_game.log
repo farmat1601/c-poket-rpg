@@ -1,3 +1,5 @@
 ﻿  my_game.c
-C:\Users\USER\source\repos\my_game\my_game.c(38,6): warning C4013: 'ynSelect'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\USER\source\repos\my_game\my_game.c(16,9): warning C4244: 'return': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\USER\source\repos\my_game\my_game.c(55,6): warning C4013: 'ynSelect'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\USER\source\repos\my_game\my_game.c(40): warning C4716: 'newPoketmon': 값을 반환해야 합니다.
   my_game.vcxproj -> C:\Users\USER\source\repos\my_game\x64\Debug\my_game.exe
