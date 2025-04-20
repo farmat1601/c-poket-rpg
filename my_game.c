@@ -90,7 +90,7 @@ int goArea() {
 	citys[1] = "신오지방";
 	int answer;
 	answer = select(citys, 2);
-	printf("'''''''''''' %s으로 가는 중'''''''''''''", citys[answer - 1]);
+	printf("'''''''''''' %s으로 가는 중'''''''''''''\n", citys[answer - 1]);
 	return answer;
 }
 int menu() {
@@ -151,6 +151,15 @@ void defineOrigin() {
 	Bellsprout.exp = 1;
 
  }
+void myPkm() {
+	printf("나의 포켓몬정보가 출력");
+}
+void myBag() {
+	printf("내 가방의 정보가 출력");
+}
+void movement() {
+	printf("같은 지방으로만 갈 수 있다");
+}
 int main() {
 	char id[15];
 
@@ -170,8 +179,19 @@ int main() {
 
 	int pick = menu();
 	if (pick == 1) {
-		rvis
-	};
+		myPkm();
+	}
+	else if (pick == 2) {
+		myBag();
+	}
+	else if (pick == 3) {
+		movement();
+	}
+	else if (pick == 4) {
+		printf("엔터키를 누르면 게임이 종료됩니다");
+		getchar();
+		return 0;
+	}
 	
 	struct Poketmon eve;
 	eve.atk = 26;
