@@ -6,7 +6,28 @@
 데미지: (3*공격 종족값 + 기술의 위력)/50 * 상성값
 lv 1업마다 공격력 1.7% 체력 2%
 n레벨에서n+1레벨로 오를 때 필요하 exp의 양은 200*(1+ (체력 + 공격력)*0.0003)^n이다.
-
+locId : 내 위치표시
+locList: 위치목록
+0. 집
+1. 태초마을 포켓몬센터
+2.태초마을 상점
+3.태초의 나무숲
+4.태초의 갈대숲
+5.태초마을 불타입 체육관
+6.태초마을 풀타입 체육관
+7.태초마을 물타입 체육관
+8.신오지방역
+9.신오지방 포켓몬센터
+10.신오지방 상점
+11.신오의 나무숲
+12.신오의 갈대숲
+13.시간의방
+14. 공간의방
+15.시간과 공간의방
+16.신오지방 바위타입 체육관
+17.신오지방 에스퍼 타입 체육관
+18.신오지방 페어리 타입 체육관
+item list 내가 가지고있는 아이템목록
 */
 int square(double a, int b) {
 	double c = 1;
@@ -32,6 +53,22 @@ typedef struct _origin {
 	int hp;
 	int exp;
 } Origin;
+typedef struct _user {
+	char name[40];
+	int bag[50];
+	Pkm myPkm[6];
+	int locId;
+
+}User;
+
+void initMap() {
+	int m[19][19] = {};
+	
+};
+
+typedef struct _map {
+	int data[19][19];
+} Map;
 Pkm newPoketmon(int a, Origin O) {
 	Pkm empty;
 	empty.lv = a;
