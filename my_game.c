@@ -9,24 +9,26 @@ n레벨에서n+1레벨로 오를 때 필요하 exp의 양은 200*(1+ (체력 + 공격력)*0.0003)^n이
 locId : 내 위치표시
 locList: 위치목록
 0. 집
-1. 태초마을 포켓몬센터
-2.태초마을 상점
-3.태초의 나무숲
-4.태초의 갈대숲
-5.태초마을 불타입 체육관
-6.태초마을 풀타입 체육관
-7.태초마을 물타입 체육관
-8.신오지방역
-9.신오지방 포켓몬센터
-10.신오지방 상점
-11.신오의 나무숲
-12.신오의 갈대숲
-13.시간의방
-14. 공간의방
-15.시간과 공간의방
-16.신오지방 바위타입 체육관
-17.신오지방 에스퍼 타입 체육관
-18.신오지방 페어리 타입 체육관
+1.광장
+2. 태초마을 포켓몬센터
+3.태초마을 상점
+4.태초의 나무숲
+5.태초의 갈대숲
+6.태초마을 불타입 체육관
+7.태초마을 풀타입 체육관
+8.태초마을 물타입 체육관
+9.신오지방역
+10.신오지방 포켓몬센터
+11.신오지방 상점
+12.신오의 나무숲
+13.신오의 갈대숲
+14.시간의방
+15. 공간의방
+16.시간과 공간의방
+17.신오지방 바위타입 체육관
+18.신오지방 에스퍼 타입 체육관
+19.신오지방 페어리 타입 체육관
+
 item list 내가 가지고있는 아이템목록
 */
 int square(double a, int b) {
@@ -61,13 +63,68 @@ typedef struct _user {
 
 }User;
 
-void initMap() {
-	int m[19][19] = {};
+int** initMap() {
+	int m[9][9] = {0};
+	m[0][1] = 1;
+	m[2][1] = 1;
+	m[3][1] = 1;
+	m[4][1] = 1;
+	m[5][1] = 1;
+	m[6][1] = 1;
+	m[7][1] = 1;
+	m[8][1] = 1;
+	m[0][1] = 1;
+	m[1][0] = 1;
+	m[1][2] = 1;
+	m[1][3] = 1;
+	m[1][4] = 1;
+	m[1][5] = 1;
+	m[1][6] = 1;
+	m[1][7] = 1;
+	m[1][8] = 1;
+	m[4][2] = 1;
+	m[5][2] = 1;
+	m[6][2] = 1;
+	m[7][2] = 1;
+	m[8][2] = 1;
 	
+	return m;
 };
-
+char* getMapName(int m) {
+	switch (m) {
+	case 0:
+		return "집";
+		break;
+	case 1:
+		return "광장";
+		break;
+	case 2:
+		return "태초마을 포켓몬센터";
+		break;
+	case 3:
+		return "태초마을 상점";
+		break;
+	case 4:
+		return "태초마을 나무숲";
+		break;
+	case 5:
+		return "태초마을 갈대숲";
+		break;
+	case 6:
+		return "태초마을 불타입 체육관";
+		break;
+	case 7:
+		return "태초마을 풀타입 체육관";
+		break;
+	case 8:
+		return "태초마을 물타입 체육관";
+		break;
+	default:
+		return "잘못된 입력입니다.";
+	}
+}
 typedef struct _map {
-	int data[19][19];
+	int data[9][9];
 } Map;
 Pkm newPoketmon(int a, Origin O) {
 	Pkm empty;
@@ -121,7 +178,7 @@ int ynSelect() {
 	option[1] = "No";
 	return select(option, 2);
 }
-int goArea() {
+int goArea(int loc) {
 	const char* citys[2];
 	citys[0] = "태초마을";
 	citys[1] = "신오지방";
